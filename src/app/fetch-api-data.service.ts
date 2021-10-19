@@ -29,6 +29,8 @@ export class FetchApiDataService {
   // user login 
   public userLogin(userDetails: any): Observable<any> {
     console.log(userDetails);
+    localStorage.setItem('username', userDetails.Username);
+    localStorage.setItem('password', userDetails.Password);
     return this.http.post(apiUrl + 'login', userDetails).pipe(
       catchError(this.handleError)
     );

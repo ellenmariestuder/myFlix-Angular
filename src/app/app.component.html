@@ -5,28 +5,28 @@
   h4,
   h5,
   h6 {
-    margin: 8px 0;
+    margin: 25px 0;
+    /* margin: 50px; */
   }
 
   .main-page {
-    align-items: center,
-  }
-
-  .content {
     display: flex;
-    margin: 82px auto 32px;
-    padding: 0 16px;
-    max-width: 960px;
     flex-direction: column;
+    margin: 52px auto 32px;
     align-items: center;
   }
 </style>
 
 <div class="main-page">
-  <h1>
-    Welcome to myFlix!
-  </h1>
-  <button mat-raised-button (click)="openUserRegistrationDialog()" style="margin-right: 10px;" color="primary"> Sign Up
-  </button>
-  <button mat-raised-button color="primary"> Log In </button>
+  <div>
+    <h1>
+      Welcome to myFlix!
+    </h1>
+  </div>
+  <div>
+    <button mat-raised-button (click)="openUserRegistrationDialog()" style="margin-right: 10px;" color="primary"> Sign
+      Up
+    </button>
+    <button mat-raised-button (click)="openUserLoginDialog()" color="secondary"> Log In </button>
+  </div>
 </div>
