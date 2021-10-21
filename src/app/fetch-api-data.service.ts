@@ -28,9 +28,10 @@ export class FetchApiDataService {
 
   // user login 
   public userLogin(userDetails: any): Observable<any> {
-    console.log(userDetails);
-    localStorage.setItem('username', userDetails.Username);
-    localStorage.setItem('password', userDetails.Password);
+    // console.log(userDetails);
+    // localStorage.setItem('username', userDetails.Username);
+    // localStorage.setItem('password', userDetails.Password);
+    // localStorage.setItem('token', userDetails.token);
     return this.http.post(apiUrl + 'login', userDetails).pipe(
       catchError(this.handleError)
     );
@@ -39,6 +40,7 @@ export class FetchApiDataService {
   // get all movies 
   getAllMovies(): Observable<any> {
     // const token = localStorage.getItem('token');
+    console.log(token);
     return this.http.get(apiUrl + 'movies', {
       headers: new HttpHeaders(
         { Authorization: 'Bearer' + token, }
@@ -152,7 +154,7 @@ export class FetchApiDataService {
       )
     }).pipe(
       map(this.extractResponseData),
-      catchError(this.handleError)
+      catchError(this.handleError),
     );
   }
 
