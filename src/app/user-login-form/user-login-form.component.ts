@@ -29,8 +29,7 @@ export class UserLoginFormComponent implements OnInit {
       console.log(response);
       localStorage.setItem('user', response.user.Username);
       localStorage.setItem('token', response.token);
-      // localStorage.setItem('user', response.user);
-      // localStorage.setItem('password', response.user.Password);
+      console.log('local storage (login): ', localStorage)
       this.MatSnackBar.open('user logged in successfully!', 'OK', {
         duration: 2000
       });
