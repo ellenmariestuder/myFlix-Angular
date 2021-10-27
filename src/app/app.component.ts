@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
+// import { GenreViewComponent } from './genre-view/genre-view.component';
 
 @Component({
   selector: 'app-root',
@@ -32,4 +33,10 @@ export class AppComponent {
       width: '500px'
     });
   }
+
+  // openGenreDialog(): void {
+  //   this.dialog.open(GenreViewComponent, {
+  //     width: '280px'
+  //   });
+  // }
 }
