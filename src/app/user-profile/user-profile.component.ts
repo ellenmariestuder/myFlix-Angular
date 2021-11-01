@@ -25,19 +25,13 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
-    // this.getMovies();
-    // this.getFavorites();
-    // this.userFavs = this.movies.filter(
-    //   movies => movies._id===this.user.FavoriteMovies.0);
-    //   console.log('user favorite movies: ', this.userFavs);
   }
 
   getUser(): void {
     this.fetchApiData.getUser().subscribe((resp: any) => {
       this.user = resp;
       console.log('get user: ', this.user);
-      return this.user;
-      // this.getFavorites();
+      this.getFavorites();
     });
   }
 
@@ -47,53 +41,55 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  // getFavorites(): void {
-  //   this.fetchApiData.getFavoriteMovies().subscribe((resp: any) => {
-  //     this.userFavs = resp;
-  //     console.log('fav movies: ', this.userFavs);
-  //     return this.userFavs;
-  //   }) 
-  // }
+  getFavorites(): void {
+    this.fetchApiData.getAllMovies().subscribe((resp: any) => {
+      this.movies = resp;
+      this.filterFavorites();
+    });
+  }
 
-  // getFavorites(): void {
-  //   this.fetchApiData.getAllMovies().subscribe((resp: any) => {
-  //     this.movies = resp;
-  //     this.filterFavorites();
-  //     // return this.movies;
-  //   })
-  // }
+  filterFavorites(): void {
+    console.log('user favorite movies: ', this.user.FavoriteMovies);
+    this.userFavs = this.movies.filter((movie: any) =>
+      this.user.FavoriteMovies.includes(movie._id));
+    return this.userFavs;
+  }
 
-  // filterFavorites(): void {
-  //   console.log('user favorite movies: ', this.user.FavoriteMovies);
-  //   this.userFavs = this.movies.filter((movie: any) =>
-  //     this.user.FavoriteMovies.includes(movie._id));
-  //   return this.userFavs;
-  // }
-
-  removeFromFavs(): void {
-    this.fetchApiData.deleteMovieFromFavorites(this.user.FavoriteMovies._id).subscribe(() => {
-      this.snackBar.open('Movie removed from favorites.', "OK", {
+  removeFromFavs(_id: string): void {
+    this.fetchApiData.deleteMovieFromFavorites(_id).subscribe(() => {
+      this.snackBar.open('Movie has been removed from favorites.', "OK", {
         duration: 3000
       });
-    })
+      return this.getUser();
+    });
   }
 
   deleteUser(): void {
-    console.log('about to delete user');
-    this.fetchApiData.deleteUser().subscribe(() => {
-      console.log(this.user, 'was deleted');
-    });
-    // localStorage.clear();
-    // this.router.navigate(['welcome']);
+    if (confirm('Are you sure? This can\'t be undone.')) {
+      console.log('delete User before');
+      this.fetchApiData.deleteUser().subscribe(() => {
+        console.log('delete user after')
+        this.snackBar.open('User successfully deleted.', "OK", {
+          duration: 3000
+        });
+      }, (response => {
+        console.log(response);
+        this.snackBar.open(response, 'OK', {duration: 2000});
+        localStorage.clear();
+        this.router.navigate(['welcome'])
+        // .then(() => {window.location.reload();});
+      })
+      );
+    }
   }
-  
+
   logOutUser(): void {
     localStorage.clear();
     this.router.navigate(['welcome']);
   }
 
-  formatDate(Birthday: string) {
-    return formatDate(Birthday, 'MM/dd/yyyy', 'en-US');
+  formatDate(birthday: string) {
+    return formatDate(birthday, 'MM/dd/yyyy', 'en-US');
   }
 
 }

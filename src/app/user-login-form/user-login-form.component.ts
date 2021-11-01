@@ -26,7 +26,6 @@ export class UserLoginFormComponent implements OnInit {
     // function for sending form inputs to backend 
     loginUser(): void {
       this.fetchApiData.userLogin(this.userData).subscribe((response) => {
-        // [[ logic for successful user login goes here! TBI ]]
         this.dialogRef.close(); //close the modal on success
         console.log(response);
         localStorage.setItem('user', response.user.Username);
@@ -41,7 +40,8 @@ export class UserLoginFormComponent implements OnInit {
           duration: 2000
         });
       });
-      this.router.navigate(['movies']);
-      // location.reload();
+      this.router.navigate(['movies']).then(() => {
+        window.location.reload();
+      });
     }
 }

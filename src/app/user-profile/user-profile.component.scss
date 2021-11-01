@@ -8,6 +8,11 @@
   min-height: 100vh;
 }
 
+header {
+  display: flex;
+  height: 90px;
+}
+
 .header {
   color: white;
   font-family: 'Exo';
@@ -61,21 +66,19 @@ mat-card {
   color: rgba(119, 26, 105, 1);
 }
 
-.home-logout-btns {
-  width: 350px;
-  margin-top: 30px;
-}
-
 .home-btn {
   background: rgb(135, 139, 198);
   color: rgb(44, 48, 102);
-  width: 45%;
-  margin-left: 15px;
+  margin-left: auto;
+  margin-top: 30px;
+  margin-right: 20px;
+  height: 40px;
 }
 
 .logout-btn {
   background: rgb(248, 75, 223);
   color: rgb(119, 26, 105);
-  width: 45%;
-  margin-left: 15px;
+  margin-top: 30px;
+  margin-right: 20px;
+  height: 40px;
 }

@@ -87,7 +87,7 @@ export class FetchApiDataService {
 
   // delete movie from user's favorites (by movie title)
   deleteMovieFromFavorites(_id: string): Observable<any> {
-    return this.http.get(`${apiUrl}/users/${user}/Movies/${_id}`, { headers: headers }).pipe(
+    return this.http.delete(`${apiUrl}/users/${user}/Movies/${_id}`, { headers: headers }).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
     );
@@ -110,11 +110,9 @@ export class FetchApiDataService {
   }
 
   // delete user 
-  deleteUser(): Observable<any> {
-    const headers = new HttpHeaders().set('Content-Type', 'application/json;');
+  public deleteUser(): Observable<any> {
     return this.http.delete(`${apiUrl}/users/${user}`, { headers: headers }).pipe(
-      // map(this.extractResponseData),
-      catchError(this.handleError),
+      catchError(this.handleError)
     );
   }
 
