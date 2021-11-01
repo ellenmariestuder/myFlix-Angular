@@ -9,7 +9,6 @@ const apiUrl = 'https://getmyflix.herokuapp.com';
 const token = localStorage.getItem('token');
 const user = localStorage.getItem('user');
 const headers = new HttpHeaders({
-  // 'Content-Type': 'application/json',
   'Authorization': `Bearer ${token}`
 })
 
@@ -117,7 +116,6 @@ export class FetchApiDataService {
   }
 
   // extract non-typed response  
-  // private extractResponseData(res: Response): any {
   private extractResponseData(res: Response | Object): any {
     const body = res;
     return body || {};

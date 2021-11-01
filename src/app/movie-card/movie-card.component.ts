@@ -14,8 +14,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 
 export class MovieCardComponent implements OnInit {
-  
-  // @Input() _id = { _id: }
   movies: any[] = [];
   
   constructor(
@@ -60,7 +58,6 @@ export class MovieCardComponent implements OnInit {
 
   addToFavorites(movieId: string): void { 
     this.fetchApiData.addMovieToFavorites(movieId).subscribe((resp: any) => {
-      // console.log(localStorage.token)
       this.MatSnackBar.open('Movie added to favorites!', 'OK', {
         duration: 2000
       });
