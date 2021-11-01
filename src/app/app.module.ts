@@ -25,10 +25,15 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { DirectorViewComponent } from './director-view/director-view.component';
 import { GenreViewComponent } from './genre-view/genre-view.component';
 import { SynopsisViewComponent } from './synopsis-view/synopsis-view.component';
+import { UpdateUserFormComponent } from './update-user-form/update-user-form.component';
+
+// import flex layout module
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
+  { path: 'profile', component: UserProfileComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
@@ -42,7 +47,8 @@ const appRoutes: Routes = [
     UserProfileComponent,
     DirectorViewComponent,
     GenreViewComponent,
-    SynopsisViewComponent
+    SynopsisViewComponent,
+    UpdateUserFormComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +63,8 @@ const appRoutes: Routes = [
     MatDialogModule,
     MatSnackBarModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

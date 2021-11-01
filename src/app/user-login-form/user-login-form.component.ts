@@ -32,7 +32,7 @@ export class UserLoginFormComponent implements OnInit {
         localStorage.setItem('user', response.user.Username);
         localStorage.setItem('token', response.token);
         console.log('local storage (login): ', localStorage)
-        this.MatSnackBar.open('user logged in successfully!', 'OK', {
+        this.MatSnackBar.open('User logged in successfully!', 'OK', {
           duration: 2000
         });
       }, (response) => {
@@ -42,5 +42,6 @@ export class UserLoginFormComponent implements OnInit {
         });
       });
       this.router.navigate(['movies']);
+      // location.reload();
     }
 }

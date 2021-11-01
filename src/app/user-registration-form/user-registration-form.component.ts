@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+// import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,7 +16,8 @@ export class UserRegistrationFormComponent implements OnInit {
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
-    public MatSnackBar: MatSnackBar
+    public MatSnackBar: MatSnackBar,
+    // public router: Router
   ) { }
 
   ngOnInit(): void {
@@ -24,7 +26,6 @@ export class UserRegistrationFormComponent implements OnInit {
   // function for sending form inputs to backend 
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe((response) => {
-      // [[ logic for successful user registration goes here! TBI ]]
       this.dialogRef.close(); //close the modal on success
       console.log(response);
       this.MatSnackBar.open('user registered successfully!', 'OK', {
@@ -38,3 +39,28 @@ export class UserRegistrationFormComponent implements OnInit {
     });
   }
 }
+
+//   loginUser(): void {
+//     this.fetchApiData.userLogin(this.userData).subscribe((response) => {
+//       this.dialogRef.close(); //close the modal on success
+//       console.log(response);
+//       localStorage.setItem('user', response.user.Username);
+//       localStorage.setItem('token', response.token);
+//       console.log('local storage (login): ', localStorage)
+//       this.MatSnackBar.open('User logged in successfully!', 'OK', {
+//         duration: 2000
+//       });
+//     }, (response) => {
+//       console.log(response);
+//       this.MatSnackBar.open(response, 'OK', {
+//         duration: 2000
+//       });
+//     });
+//     this.router.navigate(['movies']);
+//     location.reload();
+//   }
+
+//   registerAndLogin(){
+//     this.registerUser()
+//     this.loginUser() 
+// }

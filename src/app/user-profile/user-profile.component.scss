@@ -1,0 +1,81 @@
+.bg {
+  background-image: url("../../assets/paul-volkmer-qVotvbsuM_c-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  // position: fixed;
+  min-height: 100vh;
+}
+
+.header {
+  color: white;
+  font-family: 'Exo';
+  font-size: 70px;
+  font-weight: 800;
+  // margin-top: 30px;
+  padding-top: 30px;
+  margin-left: 16px;
+}
+
+.content {
+  // width:500px;
+  // height:500px;
+  // margin:0 auto;
+  // position:absolute;
+  // left:50%;
+  // top:50%;
+  // margin-left:-250px;
+  // margin-top:-250px;
+  padding: 50px;
+}
+
+mat-card { 
+  color: white;
+  // color: rgba(227, 228, 246, 1);
+  width: 350px;
+  background: rgba(78, 79, 83, .4);
+}
+
+.user-info, .user-favorites, .user-account {
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.favorite-movies {
+  display: flex;
+}
+
+.remove {
+  margin-left: auto;
+}
+
+.update-btn {
+  background: rgb(135, 139, 198);
+  color: rgba(44, 48, 102, 1);
+}
+
+.delete-btn {
+  margin-left: 15px;
+  background: rgb(248, 75, 223);
+  color: rgba(119, 26, 105, 1);
+}
+
+.home-logout-btns {
+  width: 350px;
+  margin-top: 30px;
+}
+
+.home-btn {
+  background: rgb(135, 139, 198);
+  color: rgb(44, 48, 102);
+  width: 45%;
+  margin-left: 15px;
+}
+
+.logout-btn {
+  background: rgb(248, 75, 223);
+  color: rgb(119, 26, 105);
+  width: 45%;
+  margin-left: 15px;
+}

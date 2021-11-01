@@ -9,7 +9,7 @@ const apiUrl = 'https://getmyflix.herokuapp.com';
 const token = localStorage.getItem('token');
 const user = localStorage.getItem('user');
 const headers = new HttpHeaders({
-  'Content-Type': 'application/json',
+  // 'Content-Type': 'application/json',
   'Authorization': `Bearer ${token}`
 })
 
@@ -32,6 +32,7 @@ export class FetchApiDataService {
 
   // user login 
   public userLogin(userDetails: any): Observable<any> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json;');
     return this.http.post(`${apiUrl}/login`, userDetails).pipe(
       catchError(this.handleError)
     );
@@ -86,7 +87,7 @@ export class FetchApiDataService {
 
   // delete movie from user's favorites (by movie title)
   deleteMovieFromFavorites(_id: string): Observable<any> {
-    return this.http.get(`${apiUrl}users/${user}/Movies/${_id}`, { headers: headers }).pipe(
+    return this.http.get(`${apiUrl}/users/${user}/Movies/${_id}`, { headers: headers }).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
     );
@@ -94,7 +95,7 @@ export class FetchApiDataService {
 
   // get user 
   getUser(): Observable<any> {
-    return this.http.get(`${apiUrl}users/${user}`, { headers: headers }).pipe(
+    return this.http.get(`${apiUrl}/users/${user}`, { headers: headers }).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
     );
@@ -102,7 +103,7 @@ export class FetchApiDataService {
 
   // edit user 
   editUser(userDetails: any): Observable<any> {
-    return this.http.post(`${apiUrl}users/${user}`, userDetails, { headers: headers }).pipe(
+    return this.http.put(`${apiUrl}/users/${user}`, userDetails, { headers: headers }).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
     );
@@ -110,8 +111,9 @@ export class FetchApiDataService {
 
   // delete user 
   deleteUser(): Observable<any> {
-    return this.http.delete(`${apiUrl}users/${user}`, { headers: headers }).pipe(
-      map(this.extractResponseData),
+    const headers = new HttpHeaders().set('Content-Type', 'application/json;');
+    return this.http.delete(`${apiUrl}/users/${user}`, { headers: headers }).pipe(
+      // map(this.extractResponseData),
       catchError(this.handleError),
     );
   }

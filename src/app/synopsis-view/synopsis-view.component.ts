@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FetchApiDataService } from '../fetch-api-data.service';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-synopsis-view',
@@ -9,18 +9,14 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 // export class SynopsisViewComponent implements OnInit {
 export class SynopsisViewComponent {
   synopsis: any[] = [];
-  constructor(public fetchApiData: FetchApiDataService) { }
+  constructor(
+    @Inject(MAT_DIALOG_DATA)
+    public data: {
+      title: string;
+      description: string;
+    }
+  ) { }
 
-  ngOnInit(): void {
-    this.getOneMovie();
-  }
-
-  getOneMovie(): void {
-    this.fetchApiData.getOneMovie().subscribe((resp: any) => {
-      this.synopsis = resp;
-      console.log(this.synopsis);
-      return this.synopsis;
-    });
-  }
+  ngOnInit(): void { }
 
 }

@@ -1,0 +1,84 @@
+header {
+  display: flex;
+  height: 90px;
+}
+
+h1 {
+  color: white;
+  font-family: 'Exo';
+  font-size: 70px;
+  font-weight: 800;
+  margin-top: 30px;
+  margin-left: 16px;
+}
+
+body {
+  font-family: 'Exo';
+}
+
+.profile-btn {
+  background: rgb(135, 139, 198);
+  color: rgb(44, 48, 102);
+  margin-left: auto;
+  margin-top: 30px;
+  margin-right: 20px;
+  height: 40px;
+}
+
+.logout-btn {
+  background: rgb(248, 75, 223);
+  color: rgb(119, 26, 105);
+  margin-top: 30px;
+  margin-right: 20px;
+  height: 40px;
+}
+
+.content {
+  padding: 15px;
+}
+
+img {
+  height: 275px;
+  margin: 0 auto;
+  float: none;
+  display: block;
+}
+
+.bg {
+  background-image: url("../../assets/paul-volkmer-qVotvbsuM_c-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  // position: fixed;
+  min-height: 100vh;
+}
+
+mat-card {
+  text-align: center;
+  background: rgba(78, 79, 83, .4);
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: center;
+}
+
+mat-card-title {
+  height: 50px;
+  color: white;
+}
+
+mat-card-subtitle {
+  height: 30px;
+  color: lightgrey;
+}
+
+.icon {
+  color: rgb(248, 75, 223);
+  cursor: pointer;
+}
+
+button {
+  color: rgb(135, 139, 198);
+}
