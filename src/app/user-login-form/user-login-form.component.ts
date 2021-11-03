@@ -40,8 +40,9 @@ export class UserLoginFormComponent implements OnInit {
           duration: 2000
         });
       });
-      this.router.navigate(['movies']).then(() => {
-        window.location.reload();
-      });
+      this.router.navigate(['movies']);
+      // this.router.navigate(['movies']).then(() => {
+      //   window.location.reload();
+      // });
     }
 }
