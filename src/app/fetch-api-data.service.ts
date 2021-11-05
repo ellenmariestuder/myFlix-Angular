@@ -37,7 +37,11 @@ export class FetchApiDataService {
     );
   }
 
-  // get all movies 
+  // get all movies
+  /**
+   * Get all movies
+   * @returns array of movies
+   */
   getAllMovies(): Observable<any> {
     return this.http.get(`${apiUrl}/movies`, { headers: headers }).pipe(
       map(this.extractResponseData),
@@ -46,6 +50,10 @@ export class FetchApiDataService {
   }
 
   // get one movie (by title)
+  /**
+   * Get single movie (by title)
+   * @returns data for single movie
+   */
   getOneMovie(): Observable<any> {
     return this.http.get(`${apiUrl}/movies/Title`, { headers: headers }).pipe(
       map(this.extractResponseData),
@@ -54,6 +62,10 @@ export class FetchApiDataService {
   }
 
   // get director (by name)
+  /**
+   * Get director info (by name)
+   * @returns data for specific director
+   */
   getDirector(): Observable<any> {
     return this.http.get(`${apiUrl}/Director/:Name`, { headers: headers }).pipe(
       map(this.extractResponseData),
@@ -61,6 +73,10 @@ export class FetchApiDataService {
     );
   }
   // get genre (by name)
+  /**
+   * Get genere info (by name)
+   * @returns data for specific genre
+   */
   getGenre(): Observable<any> {
     return this.http.get(`${apiUrl}/Genre/:Name`, { headers: headers }).pipe(
       map(this.extractResponseData),
@@ -69,6 +85,10 @@ export class FetchApiDataService {
   }
 
   // get user's favorite movies
+  /**
+   * Get user's favorite movies
+   * @returns list of user's favorite movies
+   */
   getFavoriteMovies(): Observable<any> {
     return this.http.get(`${apiUrl}/users/${user}/Movies`, { headers: headers }).pipe(
       map(this.extractResponseData),
@@ -77,6 +97,11 @@ export class FetchApiDataService {
   }
 
   // add movie to user's favorites (by movie title)
+  /**
+   * Add movie to user's favorites (by movie title)
+   * @param _id 
+   * @returns status message: success or error
+   */
   addMovieToFavorites(_id: string): Observable<any> {
     return this.http.post(`${apiUrl}/users/${user}/Movies/${_id}`, _id, { headers: headers }).pipe(
       map(this.extractResponseData),
@@ -85,6 +110,11 @@ export class FetchApiDataService {
   }
 
   // delete movie from user's favorites (by movie title)
+  /**
+   * Delete movie from user's favorites (by movie title)
+   * @param _id 
+   * @returns status message: success or error
+   */
   deleteMovieFromFavorites(_id: string): Observable<any> {
     return this.http.delete(`${apiUrl}/users/${user}/Movies/${_id}`, { headers: headers }).pipe(
       map(this.extractResponseData),
@@ -93,6 +123,10 @@ export class FetchApiDataService {
   }
 
   // get user 
+  /**
+   * Get user data for single user (by username)
+   * @returns object - user data
+   */
   getUser(): Observable<any> {
     return this.http.get(`${apiUrl}/users/${user}`, { headers: headers }).pipe(
       map(this.extractResponseData),
@@ -101,6 +135,11 @@ export class FetchApiDataService {
   }
 
   // edit user 
+  /**
+   * Edit data for single user (by username)
+   * @param userDetails - username and password
+   * @returns status message: success or error
+   */
   editUser(userDetails: any): Observable<any> {
     return this.http.put(`${apiUrl}/users/${user}`, userDetails, { headers: headers }).pipe(
       map(this.extractResponseData),
@@ -109,6 +148,11 @@ export class FetchApiDataService {
   }
 
   // delete user 
+  /**
+   * Delete user account/ data
+   * @param userDetails - username and password
+   * @returns status message: success or error
+   */
   public deleteUser(): Observable<any> {
     return this.http.delete(`${apiUrl}/users/${user}`, { headers: headers }).pipe(
       catchError(this.handleError)
